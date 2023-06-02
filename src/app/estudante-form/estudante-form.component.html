@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-8 m-auto">
+    <form [formGroup]="formGroupEstudante">
+      <div class="mb-3">
+        <div class="display-6 text-center">
+          Cadastro de Estudantes
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Nome:</label>
+        <input type="text" formControlName="name" class="form-control" id="name" placeholder="Seu nome">
+        <div *ngIf="submitted && name.invalid">
+          <small class="text-danger">Nome inválido!</small>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Seu email">
+        <div *ngIf="submitted && email.invalid">
+          <small class="text-danger">Email inválido!</small>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="cpf" class="form-label">CPF:</label>
+        <input type="number" formControlName="cpf" class="form-control" id="cpf" placeholder="Seu CPF">
+        <div *ngIf="submitted && cpf.invalid">
+          <small class="text-danger">CPF inválido!</small>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Telefone:</label>
+        <input type="number" formControlName="phone" class="form-control" id="phone" placeholder="Seu telefone">
+        <div *ngIf="submitted && phone.invalid">
+          <small class="text-danger">Phone inválido!</small>
+        </div>
+      </div>
+      <div class="mb-3 d-flex justify-content-end gap-2">
+        <button class="btn btn-success" (click)="save()">Salvar</button>
+        <button class="btn btn-danger" (click)="limparDados()">Limpar</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -12,21 +12,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class EstudanteComponent implements OnInit {
 
   estudantes: Estudante[] = [];
+  student: Estudante = {} as Estudante;
   isEditing: boolean = false;
-  formGroupEstudante: FormGroup;
-
-  constructor(private EstudantesService: EstudantesService,
-    private formBuilder: FormBuilder
-
-  ) {
-    this.formGroupEstudante = formBuilder.group({
-      id: [''],
-      name: [''],
-      email: [''],
-      cpf: [''],
-      telefone: ['']
-    });
+  constructor(private EstudantesService: EstudantesService) {
   }
+
   ngOnInit(): void {
     this.loadEstudantes();
   }
@@ -37,13 +27,16 @@ export class EstudanteComponent implements OnInit {
     });
   }
 
-  save() {
+  onCleanEvent(){
+    this.isEditing = false;
+  }
+
+  onSaveEvent(student: Estudante) {
     if (this.isEditing) {
-      this.EstudantesService.update(this.formGroupEstudante.value).subscribe(
+      this.EstudantesService.update(student).subscribe(
         {
           next: () => {
             this.loadEstudantes();
-            this.formGroupEstudante.reset();
             this.isEditing = false;
           }
 
@@ -51,33 +44,26 @@ export class EstudanteComponent implements OnInit {
       );
     }
     else {
-      this.EstudantesService.save(this.formGroupEstudante.value).subscribe(
+      this.EstudantesService.save(student).subscribe(
         {
           next: data => {
             this.estudantes.push(data)
-            this.formGroupEstudante.reset();
-
           }
         }
       );
     }
-  }
+}
 
-  edit(estudantes: Estudante) {
-    this.formGroupEstudante.setValue(estudantes);
-    this.isEditing = true;
-  }
+edit(Estudante: Estudante) {
+  this.student = Estudante;
+  this.isEditing = true;
+}
 
-  delete(estudantes: Estudante) {
-    this.EstudantesService.delete(estudantes).subscribe(
-      {
-        next: () => this.loadEstudantes()
-      }
-    );
-  }
-
-  clear() {
-    return this.formGroupEstudante.reset();
-  }
-
+delete(student: Estudante) {
+  this.EstudantesService.delete(student).subscribe(
+    {
+      next: () => this.loadEstudantes()
+    }
+  );
+}
 }

@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EstudanteComponent } from './estudante/estudante.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EstudanteFormComponent } from './estudante-form/estudante-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EstudanteComponent
+    EstudanteComponent,
+    EstudanteFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,18 @@
+{
+  "estudantes": [
+    {
+      "id": 1,
+      "name": "Maria",
+      "email": "maria@gmail.com",
+      "cpf": "23121231213211",
+      "phone": 12321321321321232
+    },
+    {
+      "id": 2,
+      "name": "Maria Souza",
+      "email": "maria.souza@gmail.com",
+      "cpf": "23132112321321",
+      "phone": 321321321321321340
+    }
+  ]
+}
